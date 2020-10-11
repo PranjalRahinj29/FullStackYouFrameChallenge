@@ -4,7 +4,7 @@ const path = require('path');
 const helpers = require('./helpers');
 
 
-const routerHello=require('./hello')
+
 const routerUpload=require('./upload')
 
 
@@ -20,11 +20,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(bodyParser.json())
-app.use('/api/hello',routerHello)
-//app.use(express.static(__dirname + '/uploads'));
-
  
-
 app.use('/api/upload',routerUpload)
 
 var publicDir = require('path').join(__dirname,'/uploads'); 
