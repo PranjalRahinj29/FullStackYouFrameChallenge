@@ -1,6 +1,5 @@
 var express = require('express')
 var multer = require('multer')
-var path = require('path')
 var helpers = require('./helpers')
 
 const router = express.Router()
@@ -10,7 +9,7 @@ var storage = multer.diskStorage({
         callback(null, 'uploads/images')
     },
     filename: function (req, file, callback) {
-        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+        callback(null, file.fieldname + '-' + Date.now() + '-' + file.originalname)
     }
 })
 
@@ -19,9 +18,8 @@ router.post('/', function (req, res) {
         storage: storage,
         fileFilter: helpers.imageFilter
     }).single('userFile');
+
     upload(req, res, function (err) {
-
-
         if (req.fileValidationError) {
             return res.status(400).send({ 'errorText': req.fileValidationError });
         }
@@ -34,7 +32,8 @@ router.post('/', function (req, res) {
         else if (err) {
             return res.send(err);
         }
-        res.send({ 'status': 'File is uploaded' })
+        let imageUrls = helpers.getFiles('uploads');
+        res.status(201).send({ 'status': 'File is uploaded', 'fileName': imageUrls.reverse()[0] })
     })
 })
 
