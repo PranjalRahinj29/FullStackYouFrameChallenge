@@ -11,6 +11,7 @@ import { UploadComponent } from './upload/upload.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UploadService } from './upload/upload.service';
 
 
 const routes: Route[] = [
@@ -32,7 +33,7 @@ const routes: Route[] = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', (request, response) => {
     let imageUrls = getFiles('uploads');
-    response.json(imageUrls);
+    response.json(imageUrls.reverse());
 })
 
 function getFiles(dir, files_) {
