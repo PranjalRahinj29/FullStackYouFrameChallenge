@@ -1,3 +1,12 @@
+h1 {
+  text-align: center;
+  
+}
+.topnav {
+  background-color: Dark - #2c5282;
+  position: relative;
+  overflow-x: hidden;
+}
 #container{
     position: relative;
     overflow-x: hidden;
