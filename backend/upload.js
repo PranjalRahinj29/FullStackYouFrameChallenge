@@ -7,7 +7,7 @@ const router = express.Router()
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, 'uploads')
+        callback(null, 'uploads/images')
     },
     filename: function (req, file, callback) {
         callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
@@ -39,4 +39,3 @@ router.post('/', function (req, res) {
 })
 
 module.exports = router
-

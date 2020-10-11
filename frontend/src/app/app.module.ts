@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
 import { UploadComponent } from './upload/upload.component';
-import { NgImageSliderModule } from 'ng-image-slider';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,7 +29,6 @@ const routes: Route[] = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgImageSliderModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
