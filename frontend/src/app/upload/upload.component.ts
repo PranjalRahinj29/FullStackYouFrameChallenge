@@ -13,6 +13,13 @@ import { Router } from '@angular/router';
 
 const image_base_url: string = "http://localhost:4000";
 
+class ImageSnippet {
+    pending: boolean = false;
+    status: string = 'init';
+
+    constructor(public src: string, public file: File) { }
+}
+
 @Component({
     selector: 'app-upload',
     templateUrl: './upload.component.html',
@@ -40,12 +47,15 @@ const image_base_url: string = "http://localhost:4000";
 export class UploadComponent implements OnInit {
 
     images: any = [];
+    selectedFile: ImageSnippet;
 
     public safeUrls = [];
     public imageUrls: any;
     public state = 'void';
     public disableSliderButtons = false;
-    service: UploadService
+
+    service: UploadService;
+
     constructor(private sanitizer: DomSanitizer, service: UploadService, private router: Router) {
         this.service = service
         this.getAllImageUrls();
@@ -71,8 +81,37 @@ export class UploadComponent implements OnInit {
         this.imageUrls = this.safeUrls;
     }
 
-    onUpload(event) {
-        this.imageUrls.unshift('/assets/images/abc.jpg');
+    private onSuccess(fileName) {
+        this.selectedFile.pending = false;
+        this.selectedFile.status = 'ok';
+        this.imageUrls.unshift(image_base_url + fileName);
+    }
+
+    private onError() {
+        this.selectedFile.pending = false;
+        this.selectedFile.status = 'fail';
+        this.selectedFile.src = '';
+    }
+
+    processFile(imageInput: any) {
+        const file: File = imageInput.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', (event: any) => {
+            this.selectedFile = new ImageSnippet(event.target.result, file);
+
+            this.selectedFile.pending = true;
+            this.service.uploadImage(this.selectedFile.file).subscribe(
+                (res) => {
+
+                    this.onSuccess(res.fileName);
+                },
+                (err) => {
+                    this.onError();
+                })
+        });
+
+        reader.readAsDataURL(file);
     }
 
     imageRotate(arr, reverse) {
@@ -108,4 +147,5 @@ export class UploadComponent implements OnInit {
     onStart($event) {
         this.disableSliderButtons = true;
     }
+
 }

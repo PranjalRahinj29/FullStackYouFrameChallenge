@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
 import { UploadComponent } from './upload/upload.component';
 
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadService } from './upload/upload.service';
 
