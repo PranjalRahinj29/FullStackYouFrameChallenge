@@ -43,7 +43,7 @@ $ npm run start
 After successful running of angular dev server(e.g. on port 4200). the application is accessible on URL [http://localhost:4200](http://localhost:4200).
 
 > Note:
-> The code is developed on linux machine. on windows may require to run appropriate commands and perhaps require little but code changes.
-> 
+> The code is developed on linux machine. on windows may require to run appropriate commands and perhaps require little bit code changes.
+> Tto successful installed packag, your user require permission to create new directory so it may require to run `npm install` and `npm run start` commands with   `sudo`  
 
 
