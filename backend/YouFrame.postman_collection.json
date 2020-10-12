@@ -1,0 +1,54 @@
+{
+	"variables": [],
+	"info": {
+		"name": "YouFrame",
+		"_postman_id": "6e8560c0-a6f5-75db-9d09-1969607d30ee",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "helloworldapi",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetFileUrls",
+			"request": {
+				"url": "http://localhost:4000/api/imageUrls",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "FileUpload",
+			"request": {
+				"url": "http://localhost:4000/api/upload",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userFile",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
